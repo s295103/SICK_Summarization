@@ -749,10 +749,61 @@ class MediasumDataset_total:
     pass
 
 class TweetsummDataset(Dataset):
-    pass
+    def __init__(self, encoder_max_len, decoder_max_len, split_type, tokenizer, extra_context=False, extra_supervision=False, paracomet=False, relation="xReason", supervision_relation="isAfter", roberta=False, sentence_transformer=False):
+        self.encoder_max_len = encoder_max_len
+        self.decoder_max_len = decoder_max_len
+        self.split_type = split_type
+        self.tokenizer = tokenizer
+
+        self.extra_context=extra_context
+        self.extra_supervision=extra_supervision
+        
+        self.relation = relation
+        self.paracomet= paracomet
+        
+        self.roberta=roberta
+        self.sentence_transformer = sentence_transformer
+
+        if (self.paracomet) and ("<" != self.relation[0]):
+            self.relation = f"<|{self.relation}|>"
+
+        self.supervision_relation = supervision_relation
+        if not self.sentence_transformer:
+            print(self.relation)
+
+        else:
+            if self.paracomet:
+                print("PARACOMET sentence-transformer")
+            else:
+                print("COMET sentence-transformer")
+
+        ##################################################
+
+    
+    def __len__(self):
+        return self.data_len
+
+    def __getitem__(self, index):
+        pass
 
 class TweetsummDataset_total:
-    pass
+    def __init__(self, encoder_max_len, decoder_max_len, tokenizer, 
+                 extra_context=False, extra_supervision=False, paracomet=False, 
+                 relation="xReason",roberta=False,supervision_relation='isAfter', 
+                 sentence_transformer=False):
+        self.train_dataset = TweetsummDataset(encoder_max_len, decoder_max_len, 'train',tokenizer,extra_context,extra_supervision,paracomet=paracomet,relation=relation,roberta=roberta,supervision_relation=supervision_relation, sentence_transformer=sentence_transformer)
+        self.eval_dataset = TweetsummDataset(encoder_max_len, decoder_max_len, 'validation', tokenizer,extra_context,extra_supervision,paracomet=paracomet,relation=relation,roberta=roberta,supervision_relation=supervision_relation, sentence_transformer=sentence_transformer)
+        self.test_dataset = TweetsummDataset(encoder_max_len, decoder_max_len, 'test', tokenizer,extra_context,extra_supervision,paracomet=paracomet,relation=relation,roberta=roberta,supervision_relation=supervision_relation, sentence_transformer=sentence_transformer)
+        print(self.train_dataset.data_len)
+    
+    def getTrainData(self):
+        return self.train_dataset
+    
+    def getEvalData(self):
+        return self.eval_dataset
+
+    def getTestData(self):
+        return self.test_dataset
 
 
 class SamsumDataset_low(Dataset):
