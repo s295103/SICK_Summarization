@@ -779,6 +779,11 @@ class TweetsummDataset(Dataset):
 
         ##################################################
 
+        # Load JSON
+        with open(f"../data/tweetsum_data/{self.split}.json) as f:
+            self.dialog_data = json.load(f)
+        if self.extra_
+
     
     def __len__(self):
         return self.data_len
