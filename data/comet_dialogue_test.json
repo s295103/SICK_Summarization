@@ -1,0 +1,1375 @@
+{
+    "bbde6d8ec7c39c4551da1ff6024f997b": {
+        "0": {
+            "sentence": "Customer:\t@hulu_support My watchlist is not updating with new episodes (past couple days). Any idea why?",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonX doesn't know how.",
+                " The service is not working.",
+                " The show is too good.",
+                " The service is down.",
+                " customer service"
+            ],
+            "xWant": [
+                " to ask for an explanation",
+                " to ask for a refund",
+                " to ask for help",
+                " to complain to the service",
+                " to find out why"
+            ],
+            "xIntent": [
+                " to be informed",
+                " to be entertained",
+                " none",
+                " annoyed",
+                " frustrated"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to call the service",
+                " to contact the service",
+                " to have a problem",
+                " none"
+            ],
+            "xReason": [
+                " annoyed",
+                " frustrated",
+                " satisfied",
+                " angry",
+                " customer"
+            ]
+        },
+        "1": {
+            "sentence": "Agent:\t@658975 Apologies for the trouble, Norlene! We're looking into this. In the meantime, try navigating to the season / episode manually.",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX tells PersonX not to worry about it",
+                " PersonX tells PersonX not to do it.",
+                " PersonX tells PersonX not to worry.",
+                " PersonX tells PersonX not to worry",
+                " none"
+            ],
+            "xWant": [
+                " to find out what's wrong",
+                " to find out what is wrong",
+                " to find out what happened",
+                " to fix the problem",
+                " to make sure they understand"
+            ],
+            "xIntent": [
+                " to find out what happened",
+                " to find out the truth",
+                " have a good time",
+                " to be helpful",
+                " none"
+            ],
+            "xNeed": [
+                " find out what is wrong",
+                " find out more about it",
+                " find out what's wrong",
+                " find out what happened",
+                " find out more"
+            ],
+            "xReason": [
+                " PersonX apologizes to PersonY",
+                " PersonX apologizes to PersonX",
+                " PersonX apologizes.",
+                " PersonX apologizes",
+                " none"
+            ]
+        },
+        "2": {
+            "sentence": "Customer:\t@hulu_support Tried logging out/back in, that didn\u2019t help",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonX doesn't know how to help.",
+                " PersonX doesn't know how to log out",
+                " PersonX doesn't have access to the internet",
+                " PersonX doesn't have a phone.",
+                " PersonX doesn't know how."
+            ],
+            "xWant": [
+                " to ask for help",
+                " to log back in",
+                " to get a refund",
+                " to log out",
+                " to get help"
+            ],
+            "xIntent": [
+                " to get something done",
+                " to get a refund",
+                " to log out",
+                " to help",
+                " none"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to log in",
+                " to log out",
+                " none"
+            ],
+            "xReason": [
+                " PersonY asks for help.",
+                " PersonY asks for help",
+                " customer service",
+                " frustrated",
+                " annoyed"
+            ]
+        },
+        "3": {
+            "sentence": "Agent:\t@658975 Sorry! \ud83d\ude14 We assure you that our team is working hard to investigate, and we hope to have a fix ready soon!",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX doesn't know how to fix it",
+                " The fix is not ready yet.",
+                " PersonX doesn't have the authority.",
+                " The fix is not ready.",
+                " The fix is not ready"
+            ],
+            "xWant": [
+                " to fix the problem",
+                " to fix the problem.",
+                " to get a fix",
+                " to fix it",
+                " to apologize"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to fix something",
+                " none",
+                " to fix it",
+                " to help"
+            ],
+            "xNeed": [
+                " to make a mistake",
+                " to have a problem",
+                " to get a fix",
+                " none",
+                " apologize"
+            ],
+            "xReason": [
+                " PersonX apologizes.",
+                " PersonX gets fired.",
+                " PersonX apologizes",
+                " PersonX gets fired",
+                " none"
+            ]
+        },
+        "4": {
+            "sentence": "Customer:\t@hulu_support Thank you! Some shows updated overnight, but others did not...",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The show was not updated.",
+                " The show is not updated.",
+                " The shows are not updated.",
+                " The show is too good.",
+                " customer service is not working"
+            ],
+            "xWant": [
+                " to ask for a refund",
+                " to ask for an explanation",
+                " to ask for an update",
+                " to find out what happened",
+                " to complain"
+            ],
+            "xIntent": [
+                " to fix the problem",
+                " to be informed",
+                " none",
+                " to complain",
+                " satisfied"
+            ],
+            "xNeed": [
+                " to ask for an update",
+                " to ask for an explanation",
+                " to call the customer service",
+                " to ask for a refund",
+                " to ask for help"
+            ],
+            "xReason": [
+                " the show was updated",
+                " the show is updated",
+                " customer is upset",
+                " customer service",
+                " none"
+            ]
+        },
+        "5": {
+            "sentence": "Agent:\t@658975 We definitely understand, Norlene. For now, we recommend checking the show page for these shows as the new eps will be there",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " The new eps are not available yet.",
+                " The new eps are not ready yet.",
+                " The new eps will not be available.",
+                " The new eps are not available.",
+                " The show is sold out."
+            ],
+            "xWant": [
+                " to watch the new episodes",
+                " to watch the new show",
+                " to watch the new shows",
+                " to watch the show",
+                " none"
+            ],
+            "xIntent": [
+                " to know what is happening",
+                " to make sure they understand",
+                " none",
+                " to be helpful",
+                " to be informed"
+            ],
+            "xNeed": [
+                " to go to the website",
+                " to find the eps",
+                " to go to the internet",
+                " to go to the site",
+                " to find the show"
+            ],
+            "xReason": [
+                " PersonY asks PersonY what they think",
+                " have a new show to watch",
+                " have a good time",
+                " have a new show",
+                " none"
+            ]
+        },
+        "6": {
+            "sentence": "Customer:\t@hulu_support As of this morning, the problem seems to be resolved. Watchlist updated overnight with all new episodes. Thank you for your attention to this matter! I love Hulu \ud83d\udc9a",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The problem was resolved.",
+                " The problem is resolved.",
+                " The problem was fixed.",
+                " the problem is resolved",
+                " customer service"
+            ],
+            "xWant": [
+                " to ask for a refund",
+                " to ask for more information",
+                " to watch the new episodes",
+                " to watch the new show",
+                " to watch the show"
+            ],
+            "xIntent": [
+                " to be entertained",
+                " watch new shows",
+                " none",
+                " satisfied",
+                " happy"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to contact the customer service",
+                " to call the customer service",
+                " to ask for help.",
+                " to have a problem"
+            ],
+            "xReason": [
+                " customer is happy",
+                " watch the show",
+                " customer satisfaction",
+                " satisfied",
+                " happy"
+            ]
+        },
+        "7": {
+            "sentence": "Agent:\t@658975 Awesome! That's what we love to hear. If you happen to need anything else, we'll be here to support! \ud83d\udc9a",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX is too busy with work.",
+                " PersonX is too busy to help.",
+                " PersonX is a good person.",
+                " PersonX is too busy.",
+                " none"
+            ],
+            "xWant": [
+                " to help others",
+                " to be helpful",
+                " to help them",
+                " to help someone",
+                " to help"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " good about themselves",
+                " to be supportive",
+                " happy to help",
+                " none"
+            ],
+            "xNeed": [
+                " have a good time",
+                " to have a job",
+                " get a job done",
+                " to be helpful",
+                " get a job"
+            ],
+            "xReason": [
+                " glad to help",
+                " good about themselves",
+                " happy to help",
+                " none",
+                " happy"
+            ]
+        }
+    },
+    "1d1a6617ae65baa429c2232ccc908840": {
+        "0": {
+            "sentence": "Customer:\t@AirbnbHelp hi , my Acc was linked to an old number. Now I\u2019m asked to verify my Acc , where a code / call wil be sent to my old number. Any way that I can link my Acc to my current number? Pls help",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonY is not answering the phone.",
+                " PersonX is too busy to help.",
+                " PersonY is not answering the phone",
+                " PersonX is too busy to help",
+                " PersonX is too busy."
+            ],
+            "xWant": [
+                " to get a new number",
+                " to ask for a refund",
+                " to ask for a code",
+                " to get a new phone",
+                " to get a refund"
+            ],
+            "xIntent": [
+                " to be able to use the service",
+                " to be able to use their phone",
+                " to be able to use the phone",
+                " to be able to use the app",
+                " to get a new phone"
+            ],
+            "xNeed": [
+                " get a new number",
+                " to call the number",
+                " get a new phone",
+                " to call the company",
+                " ask for help"
+            ],
+            "xReason": [
+                " get a new number",
+                " get a new phone",
+                " they get a call",
+                " get a refund",
+                " none"
+            ]
+        },
+        "1": {
+            "sentence": "Agent:\t@637109 Hi there, we are here to help. We will have a specialist contact you about changing your phone number. Thank you.",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not have the correct phone number.",
+                " PersonX does not have a phone number.",
+                " PersonX does not have the phone number.",
+                " PersonX does not have a phone.",
+                " PersonX does not have a phone"
+            ],
+            "xWant": [
+                " to make sure you are ok",
+                " to make sure everything is ok",
+                " to make sure everything is okay",
+                " to help you",
+                " to help them"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to help someone",
+                " to help you",
+                " to help",
+                " to help them"
+            ],
+            "xNeed": [
+                " to have a phone number",
+                " to have a phone",
+                " to have a problem",
+                " to get a phone",
+                " none"
+            ],
+            "xReason": [
+                " PersonY calls PersonY",
+                " PersonX calls PersonX",
+                " PersonX calls PersonY",
+                " persony",
+                " helpful"
+            ]
+        },
+        "2": {
+            "sentence": "Customer:\t@AirbnbHelp Thanks. Hope to get in touch soon",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonX does not have a phone.",
+                " PersonX does not have a phone",
+                " The phone is dead.",
+                " The phone is broken.",
+                " customer service"
+            ],
+            "xWant": [
+                " to ask for a refund",
+                " to talk to the host",
+                " to ask for help",
+                " to talk to someone",
+                " to get in touch"
+            ],
+            "xIntent": [
+                " they want to be helped",
+                " to ask for help",
+                " to be helpful",
+                " none",
+                " help"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to get in touch",
+                " to contact the host",
+                " none"
+            ],
+            "xReason": [
+                " PersonY is not answering the phone.",
+                " PersonY gets a call from PersonY",
+                " PersonY gets a call from PersonX",
+                " PersonY gets a call from personY",
+                " PersonY is not answering the phone"
+            ]
+        },
+        "3": {
+            "sentence": "Agent:\t@637109 That is no problem. Please let us know if you have any further questions in the meantime.",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not have the authority to do so",
+                " PersonX is too busy to answer questions.",
+                " PersonX does not have a phone.",
+                " PersonX does not have the authority.",
+                " PersonX does not have a phone"
+            ],
+            "xWant": [
+                " to make sure they understand",
+                " to answer questions",
+                " to help you",
+                " to help them",
+                " to help"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to help someone",
+                " to answer questions",
+                " to help them",
+                " to help"
+            ],
+            "xNeed": [
+                " to ask a question",
+                " to know what they want",
+                " to have a conversation",
+                " to have a meeting",
+                " none"
+            ],
+            "xReason": [
+                " good.",
+                " good",
+                " helpful",
+                " none",
+                " happy"
+            ]
+        },
+        "4": {
+            "sentence": "Customer:\t@AirbnbHelp Hi sorry , is it for my account : __email__",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The account is locked.",
+                " The account was lost.",
+                " The account is not working",
+                " The account is locked",
+                " customer service"
+            ],
+            "xWant": [
+                " to find out what is wrong",
+                " to find out what's wrong",
+                " to ask for a refund",
+                " to ask for a refund.",
+                " to ask for an explanation"
+            ],
+            "xIntent": [
+                " to get their money back",
+                " to have a good experience",
+                " to know what is wrong",
+                " to have a good time",
+                " to get a refund"
+            ],
+            "xNeed": [
+                " to have an account",
+                " to ask for help",
+                " to contact the company",
+                " to call the company",
+                " to have a problem"
+            ],
+            "xReason": [
+                " customer service",
+                " none",
+                " annoyed",
+                " satisfied",
+                " customer"
+            ]
+        },
+        "5": {
+            "sentence": "Agent:\t@637109 Can you please delete this post as it does have personal info in it. We have updated your Case Manager https://t.co/WCQEFGIlXC",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not have any personal info.",
+                " PersonX does not have any personal information.",
+                " PersonX does not want to be identified.",
+                " PersonX does not have a computer.",
+                " PersonX does not have the information."
+            ],
+            "xWant": [
+                " to get rid of the post",
+                " to get rid of the information",
+                " to get rid of it",
+                " to get rid of the evidence",
+                " to get rid of the info"
+            ],
+            "xIntent": [
+                " get rid of it",
+                " get rid of something",
+                " to be safe",
+                " to be honest",
+                " none"
+            ],
+            "xNeed": [
+                " to find a way to delete the post",
+                " to find a way to delete it.",
+                " to find out what is in the post",
+                " to find a way to delete it",
+                " to find out what is in it"
+            ],
+            "xReason": [
+                " PersonX is in jail.",
+                " PersonX is a criminal.",
+                " PersonX is in jail",
+                " PersonX is a criminal",
+                " none"
+            ]
+        },
+        "6": {
+            "sentence": "Agent:\t@637109 who will be following up with you shortly. Feel free to DM us anytime with any other questions or concerns 2/2",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX has to go back to work.",
+                " PersonX is not in contact with PersonX",
+                " PersonX is not in contact with PersonY",
+                " PersonX has to go to work.",
+                " PersonX has to go to work"
+            ],
+            "xWant": [
+                " to follow up with PersonY",
+                " to follow up with you",
+                " to make sure everything is okay",
+                " to follow up with PersonX",
+                " to make sure everything is ok"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to follow up",
+                " to help you",
+                " to help",
+                " none"
+            ],
+            "xNeed": [
+                " to get in touch with them",
+                " to get in touch with someone",
+                " to have a conversation with someone",
+                " to have a conversation",
+                " to get in touch"
+            ],
+            "xReason": [
+                " PersonY gets a call from PersonY.",
+                " PersonY asks PersonY to follow up.",
+                " PersonY gets a call from PersonX.",
+                " PersonY gets a call from PersonY",
+                " PersonY gets a call from PersonX"
+            ]
+        },
+        "7": {
+            "sentence": "Customer:\t@AirbnbHelp Thank you",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonX doesn't have a phone.",
+                " PersonX doesn't know how to help.",
+                " There is no one to help them.",
+                " There is no one to help.",
+                " PersonX doesn't have a phone"
+            ],
+            "xWant": [
+                " to get a refund",
+                " to thank the host",
+                " to thank the person",
+                " to thank them",
+                " to thank him"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to be helped",
+                " to be thanked",
+                " thank you",
+                " none"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to call the company",
+                " to contact the company",
+                " none"
+            ],
+            "xReason": [
+                " PersonY asks PersonY if they need anything else",
+                " PersonY asks PersonY if they need any help",
+                " PersonY asks PersonY if they need help.",
+                " PersonX asks PersonX to leave the house.",
+                " PersonY asks PersonY if they need help"
+            ]
+        },
+        "8": {
+            "sentence": "Agent:\t@637109 That is no problem. Please do not hesitate to contact us with any further questions. Thank you.",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not know how to contact PersonX",
+                " PersonX is not allowed to contact PersonX.",
+                " PersonX is not allowed to contact PersonY.",
+                " PersonX does not have a phone.",
+                " PersonX is not allowed to contact PersonY"
+            ],
+            "xWant": [
+                " to make sure everything goes smoothly",
+                " to make sure everything is okay",
+                " to make sure everything is ok",
+                " to make sure everything goes well",
+                " to make sure they understand"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to help someone",
+                " to answer questions",
+                " to help them",
+                " to help"
+            ],
+            "xNeed": [
+                " to ask a question",
+                " to have a conversation",
+                " to get a job",
+                " to get the information",
+                " none"
+            ],
+            "xReason": [
+                " good.",
+                " helpful",
+                " satisfied",
+                " good",
+                " happy"
+            ]
+        }
+    },
+    "9555f25de7b6c8dfb8204f56f8bc4dd0": {
+        "0": {
+            "sentence": "Customer:\t@115858 the new update ios11 sucks. I can\u2019t even use some apps on my phone.",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The new update is too good.",
+                " The new update is too expensive.",
+                " The new update is too slow.",
+                " the new update is too good",
+                " the new update is bad"
+            ],
+            "xWant": [
+                " to get a new phone",
+                " to buy a new phone",
+                " to get a new one",
+                " to buy a new one",
+                " to find a replacement"
+            ],
+            "xIntent": [
+                " none",
+                " to be able to use apps",
+                " to be able to do things",
+                " to be able to do something",
+                " the new update is bad"
+            ],
+            "xNeed": [
+                " to get a new phone",
+                " to have a new phone",
+                " to have a broken phone",
+                " to get the new update",
+                " to have a phone"
+            ],
+            "xReason": [
+                " the new update sucks",
+                " customer complains",
+                " annoyed",
+                " frustrated",
+                " angry"
+            ]
+        },
+        "1": {
+            "sentence": "Agent:\t@368952 We want your iPhone to work properly, and we are here for you. Which apps are giving you trouble, and which iPhone?",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX doesn't know how to fix it.",
+                " PersonX doesn't want to get in trouble.",
+                " PersonX doesn't know how to fix the problem",
+                " PersonX doesn't know what to do.",
+                " PersonX doesn't have a phone."
+            ],
+            "xWant": [
+                " to help you fix it",
+                " to make sure it works",
+                " to fix the problem",
+                " to help you",
+                " to fix it"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to help you",
+                " to help someone",
+                " to help",
+                " none"
+            ],
+            "xNeed": [
+                " to find out what's wrong",
+                " to find out what is wrong",
+                " find out what is wrong",
+                " find out what's wrong",
+                " none"
+            ],
+            "xReason": [
+                " PersonY calls PersonY.",
+                " PersonY calls PersonY",
+                " persony",
+                " none",
+                " person"
+            ]
+        },
+        "2": {
+            "sentence": "Customer:\t@AppleSupport 6s. Words with friends",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " They don't have a phone.",
+                " They don't have the number.",
+                " The phone is broken.",
+                " The phone is dead.",
+                " customer service"
+            ],
+            "xWant": [
+                " to ask for help",
+                " to get a refund",
+                " to talk to them",
+                " to ask questions",
+                " to talk"
+            ],
+            "xIntent": [
+                " to be heard",
+                " to be understood",
+                " to communicate",
+                " to talk",
+                " talk to"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to talk to someone",
+                " to talk to them",
+                " to have a conversation",
+                " none"
+            ],
+            "xReason": [
+                " PersonX calls PersonY",
+                " PersonX calls PersonX",
+                " talk to friends",
+                " talk to",
+                " none"
+            ]
+        },
+        "3": {
+            "sentence": "Customer:\t@AppleSupport Words pro",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonX doesn't have a phone.",
+                " PersonX does not have a phone.",
+                " PersonX doesn't have a phone",
+                " PersonX does not have a phone",
+                " customer service"
+            ],
+            "xWant": [
+                " to ask for help",
+                " to get a refund",
+                " to talk to someone",
+                " to ask questions",
+                " to get help"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to get help",
+                " none",
+                " to help",
+                " help"
+            ],
+            "xNeed": [
+                " to call the support line",
+                " to ask for help",
+                " to call the support number",
+                " to talk to the person",
+                " to talk to someone"
+            ],
+            "xReason": [
+                " they get a new phone",
+                " they get a new computer",
+                " they get a new device",
+                " PersonY asks for help",
+                " they get a refund"
+            ]
+        },
+        "4": {
+            "sentence": "Agent:\t@368952 Do you see app updates in App Store &gt; Updates? Also, are you using iOS 11.0.3?",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " The app store is closed for maintenance.",
+                " The app store is closed for the day",
+                " The app store is closed.",
+                " The app store is down.",
+                " The app is not available."
+            ],
+            "xWant": [
+                " to see if there are any updates",
+                " to see if the app is updated",
+                " to make sure the app is updated",
+                " to make sure the app is working",
+                " to make sure they are updated"
+            ],
+            "xIntent": [
+                " to know what is going on",
+                " to know what's going on",
+                " to know what's new",
+                " none",
+                " to be informed"
+            ],
+            "xNeed": [
+                " to check the app store",
+                " to have installed the app",
+                " to have installed an app",
+                " to be on the internet",
+                " to download the app"
+            ],
+            "xReason": [
+                " PersonY asks PersonY if they are using the new app.",
+                " PersonY asks PersonY if they are using the latest app.",
+                " PersonY asks PersonY if they are using the latest version.",
+                " PersonY asks PersonY if they have updated their phone.",
+                " PersonY asks PersonY if they have updated their phone"
+            ]
+        },
+        "5": {
+            "sentence": "Customer:\t@AppleSupport I am using 11.0.3 and there are no updates for words pro that I can find",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " They don't have any updates available.",
+                " They don't have any updates.",
+                " they don't have any updates for it",
+                " They don't have any updates for them",
+                " they don't have any updates"
+            ],
+            "xWant": [
+                " to ask for a refund",
+                " to complain to the company",
+                " to ask for help",
+                " to talk to the person",
+                " to talk to someone"
+            ],
+            "xIntent": [
+                " to use the latest software",
+                " to use the latest version",
+                " to get the update",
+                " none",
+                " to update"
+            ],
+            "xNeed": [
+                " to ask for an update",
+                " to ask for help",
+                " to ask for a fix",
+                " to ask for an explanation",
+                " to ask for updates"
+            ],
+            "xReason": [
+                " customer service is bad",
+                " customer service",
+                " none",
+                " frustrated",
+                " customer"
+            ]
+        },
+        "6": {
+            "sentence": "Agent:\t@368952 Thanks for checking. Next, what happens in that app that makes it unusable?",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " The app is not working.",
+                " The app is broken.",
+                " The app is not broken.",
+                " the app is not working",
+                " The app is not working"
+            ],
+            "xWant": [
+                " to make sure the app works",
+                " to find out what is wrong",
+                " to find out what's wrong",
+                " to find out what happened",
+                " to make sure it works"
+            ],
+            "xIntent": [
+                " to find out what is wrong",
+                " to find out what's wrong",
+                " to find out what happened",
+                " to make sure it works",
+                " to know what happened"
+            ],
+            "xNeed": [
+                " to find out what happened",
+                " to know what is wrong",
+                " to know what happened",
+                " to have an app",
+                " none"
+            ],
+            "xReason": [
+                " the app to not work",
+                " the app is not working",
+                " the app to be broken",
+                " the app to be fixed",
+                " the app is not usable"
+            ]
+        },
+        "7": {
+            "sentence": "Customer:\t@AppleSupport It\u2019s says it\u2019s not compatible.",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The phone is broken.",
+                " The computer is broken.",
+                " The computer is not compatible",
+                " customer service is not available",
+                " The phone is broken"
+            ],
+            "xWant": [
+                " to ask for help",
+                " to fix the problem",
+                " to talk to someone",
+                " to get a refund",
+                " to get help"
+            ],
+            "xIntent": [
+                " to fix the problem",
+                " to fix the issue",
+                " to get a refund",
+                " to fix it",
+                " to fix something"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to call the company",
+                " to call the support",
+                " ask for help"
+            ],
+            "xReason": [
+                " they get a refund",
+                " customer's phone rings",
+                " customer is upset",
+                " customer service",
+                " none"
+            ]
+        },
+        "8": {
+            "sentence": "Agent:\t@368952 Thanks for confirming this. Send us a DM and we'll work from there: https://t.co/GDrqU22YpT",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not have a phone.",
+                " PersonX doesn't have a phone.",
+                " PersonX does not have the authority.",
+                " PersonX does not have a phone",
+                " PersonX doesn't have a phone"
+            ],
+            "xWant": [
+                " to make sure they are correct",
+                " to make sure they are right",
+                " to make sure they are ok",
+                " to find out more information",
+                " to find out what happened"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to make sure",
+                " to help",
+                " none",
+                " good"
+            ],
+            "xNeed": [
+                " to find out what happened",
+                " to find out the truth",
+                " to get a response",
+                " to get the information",
+                " none"
+            ],
+            "xReason": [
+                " PersonY sends a message to PersonY",
+                " PersonY sends the message to PersonY",
+                " PersonY sends a message to PersonX",
+                " PersonY sends a message back.",
+                " PersonY sends the message."
+            ]
+        }
+    },
+    "54fe18905f0a19ee163a2b452e31e07d": {
+        "0": {
+            "sentence": "Customer:\t@115817 @UPSHelp FUCK YOU AND YOUR SHITTY PARCEL SERVICE YOUR DELIVERY DRIVERS ARE FUCKING LAZY CUNTS",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The delivery drivers are too lazy to do their job",
+                " The delivery driver is too lazy to do their job",
+                " The delivery driver is too lazy to help.",
+                " The delivery drivers are too lazy.",
+                " The delivery driver is too lazy."
+            ],
+            "xWant": [
+                " to complain about the service",
+                " to yell at the driver",
+                " to yell at the drivers",
+                " to yell at them",
+                " to complain to someone"
+            ],
+            "xIntent": [
+                " none",
+                " to complain",
+                " angry",
+                " annoyed",
+                " upset"
+            ],
+            "xNeed": [
+                " to complain about the service",
+                " to complain to the company",
+                " to call the delivery company",
+                " to complain about the delivery",
+                " to complain to someone"
+            ],
+            "xReason": [
+                " they get a receipt",
+                " they get a refund",
+                " PersonX is angry",
+                " customer is angry",
+                " angry"
+            ]
+        },
+        "1": {
+            "sentence": "Agent:\t@696741 We don't want to leave you feeling this way. Please provide more details so that we can help you. DM us. ^ML https://t.co/wKJHDXWGRQ",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX doesn't want to get in trouble.",
+                " PersonX doesn't want to be left alone.",
+                " PersonX does not want to be left alone.",
+                " PersonX doesn't want to be left out.",
+                " PersonX doesn't want to be bothered."
+            ],
+            "xWant": [
+                " to ask for help",
+                " to help you",
+                " to help them",
+                " to help him",
+                " to help"
+            ],
+            "xIntent": [
+                " to be helpful",
+                " to help them",
+                " to help someone",
+                " to help you",
+                " to help"
+            ],
+            "xNeed": [
+                " to know what is going on",
+                " to find out what is wrong",
+                " to find out what's wrong",
+                " to get in touch with someone",
+                " to find out what happened"
+            ],
+            "xReason": [
+                " PersonX tells PersonX that PersonX is lying.",
+                " PersonX tells PersonX that PersonX is a liar",
+                " PersonX asks PersonX to help them.",
+                " PersonX tells PersonX that PersonX is lying",
+                " PersonX asks PersonX to help them"
+            ]
+        },
+        "2": {
+            "sentence": "Customer:\t@UPSHelp I\u2019m not DM\u2019ing you because you\u2019re a useless company every week I get a delivery from you and the lazy driver just gives the post office the items and then the app tells me they are gonna deliver the next day then 20 mins later says they\u2019re at the post office",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " The driver is lazy.",
+                " The driver is late.",
+                " The driver is too lazy",
+                " the driver is lazy",
+                " The driver is lazy"
+            ],
+            "xWant": [
+                " to get the items delivered",
+                " to go to the store",
+                " to get a refund",
+                " to get the items",
+                " to get the item"
+            ],
+            "xIntent": [
+                " none",
+                " to complain",
+                " annoyed",
+                " frustrated",
+                " angry"
+            ],
+            "xNeed": [
+                " to call the post office",
+                " to ask for a refund",
+                " to ask for a delivery",
+                " to call the company",
+                " to call the company."
+            ],
+            "xReason": [
+                " they get a receipt from the post office",
+                " they get a receipt",
+                " the delivery is delayed",
+                " they get a refund",
+                " none"
+            ]
+        },
+        "3": {
+            "sentence": "Agent:\t@696741 There is two service levels where we are required to deliver the packages from the shipper to the Post Office and they take care of the final delivery. One is Surepost and the other is Mail Innovations. ^LD https://t.co/wKJHDXWGRQ",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " the package is delivered to the post office",
+                " PersonX does not have a job.",
+                " PersonX does not have the authority.",
+                " PersonX does not have a job",
+                " the package is delivered"
+            ],
+            "xWant": [
+                " to make sure the package is delivered",
+                " to make sure the packages are delivered",
+                " to deliver the package",
+                " to deliver the packages",
+                " to get paid"
+            ],
+            "xIntent": [
+                " to deliver the package",
+                " to deliver the packages",
+                " to be helpful",
+                " to make money",
+                " none"
+            ],
+            "xNeed": [
+                " to have a job",
+                " to get the package",
+                " to get a job",
+                " to get a package",
+                " to have a contract"
+            ],
+            "xReason": [
+                " the package is delivered",
+                " they get paid",
+                " mail delivery",
+                " none",
+                " mail"
+            ]
+        },
+        "4": {
+            "sentence": "Customer:\t@UPSHelp Well isn\u2019t that 3 service levels? And why did my app say you attempted to deliver my package when you clearly didn\u2019t. Absolute joke",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " customer service is a joke",
+                " customer service is bad.",
+                " customer service is not good",
+                " customer service is not working",
+                " customer service is bad"
+            ],
+            "xWant": [
+                " to ask for a refund",
+                " to find out what happened",
+                " to get a refund",
+                " to complain",
+                " none"
+            ],
+            "xIntent": [
+                " customer service",
+                " none",
+                " to complain",
+                " annoyed",
+                " frustrated"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to call the company",
+                " to have a complaint",
+                " to call them"
+            ],
+            "xReason": [
+                " PersonY tells PersonY to shut up.",
+                " PersonY asks why PersonY is asking.",
+                " PersonY tells PersonY to shut up",
+                " PersonY asks why.",
+                " they get a refund"
+            ]
+        },
+        "5": {
+            "sentence": "Agent:\t@696741 1. Surepost 2. Mail Innovations. We will need the tracking number for that package to look into it further. If you DM us that information we can check into it for you. ^LD https://t.co/wKJHDXWGRQ",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " The package was delivered to the wrong address",
+                " The package was delivered on time.",
+                " The package was delivered on time",
+                " The package was lost.",
+                " mail"
+            ],
+            "xWant": [
+                " to find out more about the package",
+                " to find out more about it",
+                " to find out what is wrong",
+                " to find out what happened",
+                " to get the information"
+            ],
+            "xIntent": [
+                " to know what happened",
+                " to find out more",
+                " to be helpful",
+                " to help",
+                " none"
+            ],
+            "xNeed": [
+                " to have received a package",
+                " find out what is wrong",
+                " find out what happened",
+                " to have a package",
+                " none"
+            ],
+            "xReason": [
+                " mail order",
+                " mailman",
+                " mail delivery",
+                " mail",
+                " none"
+            ]
+        },
+        "6": {
+            "sentence": "Customer:\t@UPSHelp So surepost is where your shit company just gets your drivers to drop off everyone\u2019s parcels at the post office? I didn\u2019t trust your shit app and went to go collect my item today and they didn\u2019t have it 20 mins later they did when on the app it said it was coming tomorrow",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " PersonY asks PersonY if they have the item.",
+                " PersonY asks PersonY why PersonY is upset.",
+                " PersonY asks PersonY if they have the item",
+                " PersonY asks PersonY why PersonY is upset",
+                " PersonY calls PersonY"
+            ],
+            "xWant": [
+                " to get the item",
+                " to get it back",
+                " get a refund",
+                " get a receipt",
+                " to get it"
+            ],
+            "xIntent": [
+                " annoyed",
+                " angry",
+                " upset",
+                " frustrated",
+                " happy"
+            ],
+            "xNeed": [
+                " find out what it is",
+                " to call the company",
+                " find out when it is",
+                " get a receipt",
+                " none"
+            ],
+            "xReason": [
+                " customer is angry",
+                " customer service",
+                " none",
+                " annoyed",
+                " customer"
+            ]
+        },
+        "7": {
+            "sentence": "Agent:\t@696741 Surepost is a contracted service where we deliver the package from the shipper to USPS for them to do the final delivery. If you do want help we will need the tracking number to see what specifically is going on. ^LD https://t.co/wKJHDXWGRQ",
+            "speaker": "Agent:",
+            "HinderedBy": [
+                " PersonX does not have a tracking number",
+                " PersonX does not have the tracking number",
+                " PersonX does not want to help.",
+                " PersonX does not want help.",
+                " PersonX does not want to help"
+            ],
+            "xWant": [
+                " to find out what is going on",
+                " to make sure the package is delivered",
+                " to make sure the package is safe",
+                " to find out what is wrong",
+                " to find out what happened"
+            ],
+            "xIntent": [
+                " to find out what is wrong",
+                " to find out what happened",
+                " to be helpful",
+                " to help",
+                " none"
+            ],
+            "xNeed": [
+                " to get the tracking number",
+                " to have the package delivered",
+                " to have a package delivered",
+                " to get the package",
+                " to have a package"
+            ],
+            "xReason": [
+                " PersonY asks for the tracking number",
+                " PersonY asks PersonY for help",
+                " PersonY asks for help",
+                " the package is delivered",
+                " none"
+            ]
+        },
+        "8": {
+            "sentence": "Customer:\t@UPSHelp I don\u2019t need you to track it you imbecile it\u2019s at the post office I\u2019m saying your delivery men are lazy cunts and don\u2019t deliver to my house how hard is that to comprehend....",
+            "speaker": "Customer:",
+            "HinderedBy": [
+                " they are lazy cunts",
+                " they are lazy cunts too",
+                " they are lazy cunts.",
+                " they are lazy",
+                " none"
+            ],
+            "xWant": [
+                " to get a refund",
+                " to get a receipt",
+                " to complain to someone",
+                " to get the item",
+                " to complain"
+            ],
+            "xIntent": [
+                " to be left alone",
+                " to get their way",
+                " to get something delivered",
+                " to get something",
+                " none"
+            ],
+            "xNeed": [
+                " to ask for help",
+                " to have a problem",
+                " to have a complaint",
+                " to call them",
+                " none"
+            ],
+            "xReason": [
+                " they are lazy cunts",
+                " they don't get paid",
+                " they don't deliver it",
+                " they don't deliver",
+                " they are lazy"
+            ]
+        }
+    }
+}

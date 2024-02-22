@@ -350,7 +350,16 @@ def custom_load_dataset(type,split):
             print("non-existing")
             os.exit()
         return data
-
+    
+    elif type == "tweetsumm":
+        dir = f"./tweetsumm_data/tweetsumm_{split}.json"
+        data = {'dialogue': [],'summary':[],'id':[]}
+        with open(dir, 'r') as f:
+            json_dict = json.load(f)
+            data["id"] = list(json_dict.keys())
+            data['dialogue'] = [v["turns"] for v in json_dict.values()]
+            data['summary'] = [v["summaries"] for v in json_dict.values()]
+        return data
 
 
 class DialogsumDataset(Dataset):
@@ -749,7 +758,7 @@ class MediasumDataset_total:
     pass
 
 class TweetsummDataset(Dataset):
-    def __init__(self, encoder_max_len, decoder_max_len, split_type, tokenizer, extra_context=False, extra_supervision=False, paracomet=False, relation="xReason", supervision_relation="isAfter", roberta=False, sentence_transformer=False):
+    def __init__(self, encoder_max_len, decoder_max_len, split_type, tokenizer, extra_context=False, extra_supervision=False, relation="xReason", supervision_relation="isAfter", sentence_transformer=False):
         self.encoder_max_len = encoder_max_len
         self.decoder_max_len = decoder_max_len
         self.split_type = split_type
@@ -759,37 +768,249 @@ class TweetsummDataset(Dataset):
         self.extra_supervision=extra_supervision
         
         self.relation = relation
-        self.paracomet= paracomet
-        
-        self.roberta=roberta
-        self.sentence_transformer = sentence_transformer
 
-        if (self.paracomet) and ("<" != self.relation[0]):
-            self.relation = f"<|{self.relation}|>"
+        self.sentence_transformer = sentence_transformer
 
         self.supervision_relation = supervision_relation
         if not self.sentence_transformer:
             print(self.relation)
 
         else:
-            if self.paracomet:
-                print("PARACOMET sentence-transformer")
-            else:
-                print("COMET sentence-transformer")
+            print("COMET sentence-transformer")
 
         ##################################################
+        self.data = custom_load_dataset('tweetsumm', split=self.split_type)
+        self.dialogue = self.data['dialogue']
+        self.summary = self.data['summary']
+        self.id = self.data['id']
 
-        # Load JSON
-        with open(f"../data/tweetsum_data/{self.split}.json) as f:
-            self.dialog_data = json.load(f)
-        if self.extra_
+        self.nlp = spacy.load('en_core_web_sm')
+        
+        if self.extra_context==True:
 
+            with open(f"../data/COMET_data/tweetsumm/comet_inference/dialogue/comet_dialogue_{self.split_type}.json") as f:
+                self.dialogue_comet_inference = json.load(f)
+
+            if self.sentence_transformer :
+                with open(f"../data/COMET_data/tweetsumm/sbert/dialogue/sbert_dialogue_{self.split_type}.json", "r") as f:
+                    self.sentence_transformer_classified_z = json.load(f)   
+        
+        if self.extra_supervision==True:
+            if self.split_type=='train':
+                with open(f"../data/COMET_data/tweetsumm/comet_inference/summary/comet_summary_train.json") as f:
+                    self.summary_comet_inference = json.load(f)
+
+                if sentence_transformer:
+                    with open(f"../data/COMET_data/tweetsumm/sbert/summary/sbert_summary_train.json", "r") as f:
+                        self.sentence_transformer_classified_w = json.load(f)
+
+        self.data_len = len(self.id)
     
     def __len__(self):
         return self.data_len
 
     def __getitem__(self, index):
-        pass
+        if self.extra_context==False:
+            #(1, sequence_length)
+            encoded_dialogue = self.tokenizer(self.dialogue[index], 
+                                            padding='max_length', 
+                                            truncation=True, 
+                                            max_length=self.encoder_max_len, 
+                                            return_tensors='pt')
+        else:
+            dialog_id = self.id[index]
+
+            if self.extra_context: # input: dialogue + COMET commonsense
+                if self.sentence_transformer: # COMET commonsense selected by SBERT
+                    ...
+                else:   # all COMET commonsense
+                    ...
+            else:   # input: dialogue only
+                ...
+
+            if self.extra_supervision:  # match the commonsense from the output and the golden summary
+                if self.sentence_transformer:   # use commonsense selected by SBERT
+                    ...
+                else:   # use all COMET commonsense
+                    ...
+            else:   # only compare output and golden summary
+                ...
+
+            
+            if self.sentence_transformer:
+                cur_dialog_data = self.sentence_transformer_classified_z[dialog_id]
+                dialogue = ""
+                for sentence_idx in range(len(cur_dialog_data.keys())):
+                    sentence = cur_dialog_data[str(sentence_idx)]["sentence"]
+                    relation = cur_dialog_data[str(sentence_idx)]["relation"]
+                    commonsense = cur_dialog_data[str(sentence_idx)]["out"]
+
+                    dialogue += sentence + "\n"
+                    dialogue+= '<I> '
+                    dialogue+= commonsense+'.'
+                    dialogue+= ' </I>'+'\n'    
+
+            else:
+                splitted_dialogue = self.dialogue[index].replace('\r\n','\n').split('\n')
+                
+                def split_sentences(text, speaker):
+                    doc = self.nlp(text)
+                    sents = [speaker.replace(":","") + ' said "' + sent.text + '"' for sent in doc.sents]
+                    return sents
+                
+                splitted_sentences = []
+                for idx, utterance in enumerate(splitted_dialogue):
+                    speaker = re.search(".*?\:",utterance)[0]
+                    utterance = utterance.replace(speaker,"").strip()
+                    utterance = split_sentences(utterance,speaker)
+                    splitted_sentences.extend(utterance)
+                    
+                dialogue= ""
+                idx=0
+                for utterance in splitted_sentences:
+                    dialogue+= utterance+'\n'
+                    if self.split_type=='train':
+                        try:
+                            while True:
+                                if self.dialogue_comet_inference['train_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
+                                    commonsense = self.dialogue_comet_inference['train_'+self.id[index]][idx][self.relation][0].strip()
+                                    # commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
+                                    break
+                                else:
+                                    idx+=1
+                                continue
+                        except:
+                            continue
+                    elif self.split_type=='validation':
+                        try:
+                            while True:
+                                if self.dialogue_comet_inference['dev_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
+                                    commonsense = self.dialogue_comet_inference['dev_'+self.id[index]][idx][self.relation][0].strip()
+                                    commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
+                                    break
+                                else:
+                                    idx+=1
+                                continue
+                        except:
+                            continue
+                    else: # self.split_type=='test':
+                        try:
+                            while True:
+                                if self.dialogue_comet_inference['test_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
+                                    commonsense = self.dialogue_comet_inference['test_'+self.id[index]][idx][self.relation][0].strip()
+                                    # commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
+                                    break
+                                else:
+                                    idx+=1
+                                continue
+
+                        except:
+                            continue
+                    if 'none' not in commonsense:
+                        dialogue+= '<I> '
+                        dialogue+= commonsense+'.'
+                        dialogue+= ' </I>'+'\n'
+                    idx+=1
+           
+            encoded_dialogue = self.tokenizer(dialogue,
+                                            padding='max_length', 
+                                            truncation=True, 
+                                            max_length=self.encoder_max_len, 
+                                            add_special_tokens=True,
+                                            return_tensors='pt')
+
+        # (1, sequence_length)
+        #with self.tokenizer.as_target_tokenizer():
+        encoded_summary = self.tokenizer(self.summary[index], 
+                                            padding='max_length', 
+                                            truncation=True, 
+                                            max_length=self.decoder_max_len, 
+                                            add_special_tokens=True,
+                                            return_tensors='pt')
+        
+        
+        model_inputs = encoded_dialogue
+        model_inputs['input_ids'] = model_inputs['input_ids'].squeeze(0)
+        model_inputs['attention_mask'] = model_inputs['attention_mask'].squeeze(0)
+        model_inputs['labels'] = encoded_summary['input_ids']
+        def shift_tokens_right(input_ids: torch.Tensor, pad_token_id: int, decoder_start_token_id: int):
+            """
+            Shift input ids one token to the right.
+            """
+            shifted_input_ids = input_ids.new_zeros(input_ids.shape)
+
+            shifted_input_ids[:, 1:] = input_ids[:, :-1].clone()
+            shifted_input_ids[:, 0] = decoder_start_token_id
+
+            if pad_token_id is None:
+                raise ValueError("self.model.config.pad_token_id has to be defined.")
+            # replace possible -100 values in labels by `pad_token_id`
+            shifted_input_ids.masked_fill_(shifted_input_ids == -100, pad_token_id)
+
+            return shifted_input_ids
+
+        #model_inputs['decoder_input_ids'] = shift_tokens_right(model_inputs['labels'].clone(),self.tokenizer.pad_token_id,0).squeeze(0)
+        model_inputs['labels'] = model_inputs['labels'].squeeze(0)
+        #print('#####')
+        #print(model_inputs['decoder_input_ids'])
+        #print()
+        #print(model_inputs['labels'])
+        #print('#####')
+        #model_inputs['decoder_attention_mask'] = encoded_summary['attention_mask'].squeeze(0)
+        
+
+
+        if self.split_type == "test":
+            encoded_summary2 = self.tokenizer(self.summary2[index], 
+                                            padding='max_length', 
+                                            truncation=True, 
+                                            max_length=self.decoder_max_len, 
+                                            return_tensors='pt')
+            model_inputs['labels2'] = encoded_summary2['input_ids'].squeeze(0)
+
+
+        
+            encoded_summary3 = self.tokenizer(self.summary3[index], 
+                                            padding='max_length', 
+                                            truncation=True, 
+                                            max_length=self.decoder_max_len, 
+                                            return_tensors='pt')
+            model_inputs['labels3'] = encoded_summary3['input_ids'].squeeze(0)
+
+        
+
+
+        if self.extra_supervision==True:
+            if self.split_type=='train':
+                if self.sentence_transformer:
+                    cur_summary_commonsense_data = self.sentence_transformer_classified_w[f"train_{self.id[index]}"]
+                    summary_commonsense = ""
+                    for summary_sentence_idx in range(len(cur_summary_commonsense_data.keys())):
+                        commonsense = cur_summary_commonsense_data[str(summary_sentence_idx)]["out"].strip()+" ."
+                        summary_commonsense += commonsense
+
+
+                
+
+                elif self.paracomet==False:
+                    summary_commonsense = ""
+                    for summ in self.summary_comet_inference["train_"+self.id[index]]:
+                        commonsense = summ[self.supervision_relation][0].strip() +'. '
+                        commonsense = commonsense.replace('PersonX','Person').replace('PersonY','Person')
+                        summary_commonsense += commonsense
+
+            
+                with self.tokenizer.as_target_tokenizer():
+                    encoded_extra_supervision = self.tokenizer(summary_commonsense,
+                                                            padding='max_length',
+                                                            truncation=True,
+                                                            max_length=self.decoder_max_len,
+                                                            return_tensors='pt')
+
+                model_inputs['extra_labels'] = encoded_extra_supervision['input_ids'].squeeze(0)
+                    
+        return model_inputs
+
 
 class TweetsummDataset_total:
     def __init__(self, encoder_max_len, decoder_max_len, tokenizer, 

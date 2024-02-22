@@ -15,7 +15,7 @@ from transformers import AutoConfig, AutoModelForSeq2SeqLM
 from transformers import Seq2SeqTrainingArguments, Seq2SeqTrainer
 from datasets import load_metric
 import wandb
-from data.dataset import SamsumDataset_total, DialogsumDataset_total
+from data.dataset import SamsumDataset_total, DialogsumDataset_total, TweetsummDataset_total
 from models.bart import BartForConditionalGeneration_DualDecoder
 from src.trainer import DualDecoderTrainer
 
@@ -148,7 +148,7 @@ elif args.dataset_name=='dialogsum':
     eval_dataset = total_dataset.getEvalData()
     test_dataset = total_dataset.getTestData()
 elif args.dataset_name=='tweetsumm':
-    total_dataset = TweetsummDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer,extra_context=True,extra_supervision=True,paracomet=args.use_paracomet,relation=args.relation,supervision_relation=args.supervision_relation, sentence_transformer=args.use_sentence_transformer, roberta=args.use_roberta)
+    total_dataset = TweetsummDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer,extra_context=True,extra_supervision=True,relation=args.relation,supervision_relation=args.supervision_relation, sentence_transformer=args.use_sentence_transformer)
     train_dataset = total_dataset.getTrainData()
     eval_dataset = total_dataset.getEvalData()
     test_dataset = total_dataset.getTestData()

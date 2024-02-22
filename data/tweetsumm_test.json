@@ -1,0 +1,74 @@
+{
+    "bbde6d8ec7c39c4551da1ff6024f997b": {
+        "turns": [
+            "Customer:\t@hulu_support My watchlist is not updating with new episodes (past couple days). Any idea why?",
+            "Agent:\t@658975 Apologies for the trouble, Norlene! We're looking into this. In the meantime, try navigating to the season / episode manually.",
+            "Customer:\t@hulu_support Tried logging out/back in, that didn\u2019t help",
+            "Agent:\t@658975 Sorry! \ud83d\ude14 We assure you that our team is working hard to investigate, and we hope to have a fix ready soon!",
+            "Customer:\t@hulu_support Thank you! Some shows updated overnight, but others did not...",
+            "Agent:\t@658975 We definitely understand, Norlene. For now, we recommend checking the show page for these shows as the new eps will be there",
+            "Customer:\t@hulu_support As of this morning, the problem seems to be resolved. Watchlist updated overnight with all new episodes. Thank you for your attention to this matter! I love Hulu \ud83d\udc9a",
+            "Agent:\t@658975 Awesome! That's what we love to hear. If you happen to need anything else, we'll be here to support! \ud83d\udc9a"
+        ],
+        "summaries": [
+            "Customer is complaining that the watchlist is not updated with new episodes from past two days. Agent informed that the team is working hard to investigate to show new episodes on page.",
+            "Customer is complaining that my watch list is not updating with the new episodes. Agent updated to recommend checking the show page for these shows as the new eps will be there.",
+            "Customer is complaining that he is not getting the updated watch list with new episodes for some shows. Agent assures that their team is working on it to resolve the issue and requests to navigate manually in the meantime."
+        ]
+    },
+    "1d1a6617ae65baa429c2232ccc908840": {
+        "turns": [
+            "Customer:\t@AirbnbHelp hi , my Acc was linked to an old number. Now I\u2019m asked to verify my Acc , where a code / call wil be sent to my old number. Any way that I can link my Acc to my current number? Pls help",
+            "Agent:\t@637109 Hi there, we are here to help. We will have a specialist contact you about changing your phone number. Thank you.",
+            "Customer:\t@AirbnbHelp Thanks. Hope to get in touch soon",
+            "Agent:\t@637109 That is no problem. Please let us know if you have any further questions in the meantime.",
+            "Customer:\t@AirbnbHelp Hi sorry , is it for my account : __email__",
+            "Agent:\t@637109 Can you please delete this post as it does have personal info in it. We have updated your Case Manager https://t.co/WCQEFGIlXC",
+            "Agent:\t@637109 who will be following up with you shortly. Feel free to DM us anytime with any other questions or concerns 2/2",
+            "Customer:\t@AirbnbHelp Thank you",
+            "Agent:\t@637109 That is no problem. Please do not hesitate to contact us with any further questions. Thank you."
+        ],
+        "summaries": [
+            "Customer is asking about the ACC to link to the current  number. Agent says that they have updated their case manager.",
+            "Customer is enquiring that whether they can change the current number to link the account as they have old number which was linked. Agent states that they have updated to case manager, they will look into it and also to DM for further assistance.",
+            "Customer wants to link their account to their new number since its asking verification where a code/call will be sent to their old number. Agent replies that they have updated the Case Manager to resolve this issue."
+        ]
+    },
+    "9555f25de7b6c8dfb8204f56f8bc4dd0": {
+        "turns": [
+            "Customer:\t@115858 the new update ios11 sucks. I can\u2019t even use some apps on my phone.",
+            "Agent:\t@368952 We want your iPhone to work properly, and we are here for you. Which apps are giving you trouble, and which iPhone?",
+            "Customer:\t@AppleSupport 6s. Words with friends",
+            "Customer:\t@AppleSupport Words pro",
+            "Agent:\t@368952 Do you see app updates in App Store &gt; Updates? Also, are you using iOS 11.0.3?",
+            "Customer:\t@AppleSupport I am using 11.0.3 and there are no updates for words pro that I can find",
+            "Agent:\t@368952 Thanks for checking. Next, what happens in that app that makes it unusable?",
+            "Customer:\t@AppleSupport It\u2019s says it\u2019s not compatible.",
+            "Agent:\t@368952 Thanks for confirming this. Send us a DM and we'll work from there: https://t.co/GDrqU22YpT"
+        ],
+        "summaries": [
+            "Customer is complaining about the new updates IOS11 and can't even use some apps on phone. Agent asks to send a DM and work from there URL.",
+            "Customer is complaining that they are unable to use some apps because of the new update ios11. Agent updates to DM through the given URL and they will work for it.",
+            "Customer is not able to use some apps on their phone due to the new update ios 11. Agent updates to send them DM through the given URL and they will work from there."
+        ]
+    },
+    "54fe18905f0a19ee163a2b452e31e07d": {
+        "turns": [
+            "Customer:\t@115817 @UPSHelp FUCK YOU AND YOUR SHITTY PARCEL SERVICE YOUR DELIVERY DRIVERS ARE FUCKING LAZY CUNTS",
+            "Agent:\t@696741 We don't want to leave you feeling this way. Please provide more details so that we can help you. DM us. ^ML https://t.co/wKJHDXWGRQ",
+            "Customer:\t@UPSHelp I\u2019m not DM\u2019ing you because you\u2019re a useless company every week I get a delivery from you and the lazy driver just gives the post office the items and then the app tells me they are gonna deliver the next day then 20 mins later says they\u2019re at the post office",
+            "Agent:\t@696741 There is two service levels where we are required to deliver the packages from the shipper to the Post Office and they take care of the final delivery. One is Surepost and the other is Mail Innovations. ^LD https://t.co/wKJHDXWGRQ",
+            "Customer:\t@UPSHelp Well isn\u2019t that 3 service levels? And why did my app say you attempted to deliver my package when you clearly didn\u2019t. Absolute joke",
+            "Agent:\t@696741 1. Surepost 2. Mail Innovations. We will need the tracking number for that package to look into it further. If you DM us that information we can check into it for you. ^LD https://t.co/wKJHDXWGRQ",
+            "Customer:\t@UPSHelp So surepost is where your shit company just gets your drivers to drop off everyone\u2019s parcels at the post office? I didn\u2019t trust your shit app and went to go collect my item today and they didn\u2019t have it 20 mins later they did when on the app it said it was coming tomorrow",
+            "Agent:\t@696741 Surepost is a contracted service where we deliver the package from the shipper to USPS for them to do the final delivery. If you do want help we will need the tracking number to see what specifically is going on. ^LD https://t.co/wKJHDXWGRQ",
+            "Customer:\t@UPSHelp I don\u2019t need you to track it you imbecile it\u2019s at the post office I\u2019m saying your delivery men are lazy cunts and don\u2019t deliver to my house how hard is that to comprehend...."
+        ],
+        "summaries": [
+            "Customer is complaining about parcel service  of  delivery drivers. Agent is asking  to provide more details.",
+            "Customer is frustrated that the delivery drivers are lazy and delivery is made on time. Agent updated that package will be deliver on time and asked customer to DM for further tracking.",
+            "Customer is complaining about the delivery experience with which was rescheduled couple of times before being delivered. Agent shared an URL and requests to provide the tracking number.",
+            "Customer is complaining about delayed delivery of an item and false mail about failed delivery. Agent explains that their service has two levels which are surepost and mail innovations, also explains about both the services."
+        ]
+    }
+}
