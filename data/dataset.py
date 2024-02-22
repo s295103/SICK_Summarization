@@ -860,13 +860,19 @@ class TweetsummDataset(Dataset):
         if self.extra_supervision: 
             if self.split_type == "train":
                 if self.sentence_transformer:   # COMET + SBERT
-                    summary_commonsense = self.sentence_transformer_classified_w[dialog_id]["0"]["commonsense"].strip()                    
+                    summary_commonsense = ""
+                    for _, summ in self.sentence_transformer_classified_w[dialog_id].items():
+                        comm += summ["commonsense"].strip() + ". "
+                        comm = comm.replace('PersonX','Person').replace('PersonY','Person')
+                        summary_commonsense += comm
+
                 else:   # plain COMET
-                    summary_commonsense = self.summary_comet_inference[dialog_id]["0"][self.supervision_relation][0].strip()
-
+                    summary_commonsense = ""
+                    for _, summ in self.summary_comet_inference[dialog_id].items():
+                        comm += summ[self.supervision_relation].strip() + ". "
+                        comm = comm.replace('PersonX','Person').replace('PersonY','Person')
+                        summary_commonsense += comm
             
-            summary_commonsense = commonsense.replace('PersonX','Person').replace('PersonY','Person')
-
             with self.tokenizer.as_target_tokenizer():
                 encoded_extra_supervision = self.tokenizer(summary_commonsense,
                                                         padding='max_length',
