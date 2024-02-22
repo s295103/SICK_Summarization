@@ -1,10 +1,9 @@
 import json
+import spacy
 
-data = {'dialogue': [],'summary':[],'id':[]}
-with open("tweetsumm_test.json", 'r') as f:
-    json_dict = json.load(f)
-    data["id"] = list(json_dict.keys())
-    data['dialogue'] = [v["turns"] for v in json_dict.values()]
-    data['summary'] = [v["summaries"] for v in json_dict.values()]
-    
+nlp = spacy.load('en_core_web_sm')
+text = "Customer:\t@AirbnbHelp Thanks. Hope to get in touch soon"
+
+doc = nlp(text)
+
 pass

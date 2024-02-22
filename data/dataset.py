@@ -350,17 +350,6 @@ def custom_load_dataset(type,split):
             print("non-existing")
             os.exit()
         return data
-    
-    elif type == "tweetsumm":
-        dir = f"./tweetsumm_data/tweetsumm_{split}.json"
-        data = {'dialogue': [],'summary':[],'id':[]}
-        with open(dir, 'r') as f:
-            json_dict = json.load(f)
-            data["id"] = list(json_dict.keys())
-            data['dialogue'] = [v["turns"] for v in json_dict.values()]
-            data['summary'] = [v["summaries"] for v in json_dict.values()]
-        return data
-
 
 class DialogsumDataset(Dataset):
     def __init__(self, encoder_max_len, decoder_max_len, split_type, tokenizer, extra_context=False, extra_supervision=False, paracomet=False, relation="xReason", supervision_relation="isAfter", roberta=False, sentence_transformer=False):
@@ -779,10 +768,12 @@ class TweetsummDataset(Dataset):
             print("COMET sentence-transformer")
 
         ##################################################
-        self.data = custom_load_dataset('tweetsumm', split=self.split_type)
-        self.dialogue = self.data['dialogue']
-        self.summary = self.data['summary']
-        self.id = self.data['id']
+        dir = f"./tweetsumm_data/tweetsumm_{self.split_type}.json"
+        with open(dir, 'r') as f:
+            json_dict = json.load(f)
+            self.id = list(json_dict.keys())
+            self.dialogue = [v["turns"] for v in json_dict.values()]
+            self.summary = [v["summaries"] for v in json_dict.values()]
 
         self.nlp = spacy.load('en_core_web_sm')
         
@@ -810,30 +801,33 @@ class TweetsummDataset(Dataset):
         return self.data_len
 
     def __getitem__(self, index):
-        if self.extra_context==False:
-            #(1, sequence_length)
-            encoded_dialogue = self.tokenizer(self.dialogue[index], 
-                                            padding='max_length', 
-                                            truncation=True, 
-                                            max_length=self.encoder_max_len, 
-                                            return_tensors='pt')
-        else:
-            dialog_id = self.id[index]
 
             if self.extra_context: # input: dialogue + COMET commonsense
-                if self.sentence_transformer: # COMET commonsense selected by SBERT
+                dialog_id = self.id[index]
+
+                if self.sentence_transformer: # COMET + SBERT
                     ...
-                else:   # all COMET commonsense
-                    ...
+                else:   # plain COMET
+                    num_sent = len(self.dialogue_comet_inference[dialog_id])
+                    sent = [self.dialogue_comet_inference[dialog_id][str(i)]["sentence"] for i in num_sent]
+                    # remove user handler
+                    # <speaker> said + sentence
+                    speaker = [self.dialogue_comet_inference[dialog_id][str(i)]["speaker"] for i in num_sent]
+                    comm = [self.dialogue_comet_inference[dialog_id][str(i)][self.relation] for i in num_sent]
+                    
             else:   # input: dialogue only
-                ...
+                encoded_dialogue = self.tokenizer(self.dialogue[index], #(1, sequence_length)
+                                                padding='max_length', 
+                                                truncation=True, 
+                                                max_length=self.encoder_max_len, 
+                                                return_tensors='pt')
 
             if self.extra_supervision:  # match the commonsense from the output and the golden summary
-                if self.sentence_transformer:   # use commonsense selected by SBERT
+                if self.sentence_transformer:   # COMET + SBERT
                     ...
-                else:   # use all COMET commonsense
+                else:   # plain COMET
                     ...
-            else:   # only compare output and golden summary
+            else:   # no commonsense supervision
                 ...
 
             
