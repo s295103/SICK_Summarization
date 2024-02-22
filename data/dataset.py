@@ -774,145 +774,82 @@ class TweetsummDataset(Dataset):
             self.id = list(json_dict.keys())
             self.dialogue = [v["turns"] for v in json_dict.values()]
             self.summary = [v["summaries"] for v in json_dict.values()]
-
-        self.nlp = spacy.load('en_core_web_sm')
         
         if self.extra_context==True:
-
-            with open(f"../data/COMET_data/tweetsumm/comet_inference/dialogue/comet_dialogue_{self.split_type}.json") as f:
-                self.dialogue_comet_inference = json.load(f)
-
             if self.sentence_transformer :
                 with open(f"../data/COMET_data/tweetsumm/sbert/dialogue/sbert_dialogue_{self.split_type}.json", "r") as f:
                     self.sentence_transformer_classified_z = json.load(f)   
+            else:
+                with open(f"../data/COMET_data/tweetsumm/comet_inference/dialogue/comet_dialogue_{self.split_type}.json") as f:
+                    self.dialogue_comet_inference = json.load(f)
         
         if self.extra_supervision==True:
             if self.split_type=='train':
-                with open(f"../data/COMET_data/tweetsumm/comet_inference/summary/comet_summary_train.json") as f:
-                    self.summary_comet_inference = json.load(f)
-
                 if sentence_transformer:
                     with open(f"../data/COMET_data/tweetsumm/sbert/summary/sbert_summary_train.json", "r") as f:
                         self.sentence_transformer_classified_w = json.load(f)
+                
+                else:
+                    with open(f"../data/COMET_data/tweetsumm/comet_inference/summary/comet_summary_train.json") as f:
+                        self.summary_comet_inference = json.load(f)
 
         self.data_len = len(self.id)
+        self.handler_pattern = "(^|[^@\w])@(\w{1,15})+\W"
+        self.emoji_pattern = '(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])'
     
     def __len__(self):
         return self.data_len
 
     def __getitem__(self, index):
 
-            if self.extra_context: # input: dialogue + COMET commonsense
-                dialog_id = self.id[index]
+        clean_dialog = []
+        for utt in self.dialogue[index]:
+            speaker = utt.split("\t")[0].replace(":", "")
+            sent = utt.split("\t")[1]
+            no_handler_sent = re.sub(self.handler_pattern, "", sent)
+            no_emoji_sent = re.sub(self.emoji_pattern, "", no_handler_sent)
+            clean_dialog.append(speaker + " said \"" + no_emoji_sent + "\".")
+    
+        dialog_id = self.id[index]
 
-                if self.sentence_transformer: # COMET + SBERT
-                    ...
-                else:   # plain COMET
-                    num_sent = len(self.dialogue_comet_inference[dialog_id])
-                    sent = [self.dialogue_comet_inference[dialog_id][str(i)]["sentence"] for i in num_sent]
-                    # remove user handler
-                    # <speaker> said + sentence
-                    speaker = [self.dialogue_comet_inference[dialog_id][str(i)]["speaker"] for i in num_sent]
-                    comm = [self.dialogue_comet_inference[dialog_id][str(i)][self.relation] for i in num_sent]
-                    
-            else:   # input: dialogue only
-                encoded_dialogue = self.tokenizer(self.dialogue[index], #(1, sequence_length)
-                                                padding='max_length', 
-                                                truncation=True, 
-                                                max_length=self.encoder_max_len, 
-                                                return_tensors='pt')
-
-            if self.extra_supervision:  # match the commonsense from the output and the golden summary
-                if self.sentence_transformer:   # COMET + SBERT
-                    ...
-                else:   # plain COMET
-                    ...
-            else:   # no commonsense supervision
-                ...
-
-            
-            if self.sentence_transformer:
-                cur_dialog_data = self.sentence_transformer_classified_z[dialog_id]
-                dialogue = ""
-                for sentence_idx in range(len(cur_dialog_data.keys())):
-                    sentence = cur_dialog_data[str(sentence_idx)]["sentence"]
-                    relation = cur_dialog_data[str(sentence_idx)]["relation"]
-                    commonsense = cur_dialog_data[str(sentence_idx)]["out"]
-
-                    dialogue += sentence + "\n"
-                    dialogue+= '<I> '
-                    dialogue+= commonsense+'.'
-                    dialogue+= ' </I>'+'\n'    
-
-            else:
-                splitted_dialogue = self.dialogue[index].replace('\r\n','\n').split('\n')
+        if self.extra_context: # input: dialogue + commonsense
+            if self.sentence_transformer: # SBERT
+                sbert_data = self.sentence_transformer_classified_z[dialog_id]
+                num_sent = len(sbert_data)
+                commonsense = [sbert_data[str(i)]["commonsense"].strip() for i in num_sent]
                 
-                def split_sentences(text, speaker):
-                    doc = self.nlp(text)
-                    sents = [speaker.replace(":","") + ' said "' + sent.text + '"' for sent in doc.sents]
-                    return sents
-                
-                splitted_sentences = []
-                for idx, utterance in enumerate(splitted_dialogue):
-                    speaker = re.search(".*?\:",utterance)[0]
-                    utterance = utterance.replace(speaker,"").strip()
-                    utterance = split_sentences(utterance,speaker)
-                    splitted_sentences.extend(utterance)
-                    
-                dialogue= ""
-                idx=0
-                for utterance in splitted_sentences:
-                    dialogue+= utterance+'\n'
-                    if self.split_type=='train':
-                        try:
-                            while True:
-                                if self.dialogue_comet_inference['train_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
-                                    commonsense = self.dialogue_comet_inference['train_'+self.id[index]][idx][self.relation][0].strip()
-                                    # commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
-                                    break
-                                else:
-                                    idx+=1
-                                continue
-                        except:
-                            continue
-                    elif self.split_type=='validation':
-                        try:
-                            while True:
-                                if self.dialogue_comet_inference['dev_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
-                                    commonsense = self.dialogue_comet_inference['dev_'+self.id[index]][idx][self.relation][0].strip()
-                                    commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
-                                    break
-                                else:
-                                    idx+=1
-                                continue
-                        except:
-                            continue
-                    else: # self.split_type=='test':
-                        try:
-                            while True:
-                                if self.dialogue_comet_inference['test_'+self.id[index]][idx]['sentence'] not in ("#Person1#:","#Person2#:"):
-                                    commonsense = self.dialogue_comet_inference['test_'+self.id[index]][idx][self.relation][0].strip()
-                                    # commonsense = commonsense.replace("PersonX","Person").replace("PersonY","Person")
-                                    break
-                                else:
-                                    idx+=1
-                                continue
+            else:   # plain COMET
+                comet_data = self.dialogue_comet_inference[dialog_id]
+                num_sent = len(comet_data)
+                commonsense = [comet_data[str(i)][self.relation][0].strip() for i in num_sent]
 
-                        except:
-                            continue
-                    if 'none' not in commonsense:
-                        dialogue+= '<I> '
-                        dialogue+= commonsense+'.'
-                        dialogue+= ' </I>'+'\n'
-                    idx+=1
-           
-            encoded_dialogue = self.tokenizer(dialogue,
+            commonsense = [c.replace("PersonX", "Person").replace("PersonY", "Person") for c in commonsense]
+
+            input_sample = ""
+            for i, utterance in enumerate(clean_dialog):
+                input_sample += utterance + "\n"                    
+                input_sample += '<I> '
+                input_sample += commonsense[i]+'.'
+                input_sample += ' </I>'+'\n'  
+
+        else:   # input: dialogue only
+            input_sample = "\n".join(clean_dialog)
+
+        encoded_dialogue = self.tokenizer(self.dialogue[index], #(1, sequence_length)
                                             padding='max_length', 
                                             truncation=True, 
                                             max_length=self.encoder_max_len, 
-                                            add_special_tokens=True,
                                             return_tensors='pt')
 
+        if self.extra_supervision:  # match the commonsense from the output and the golden summary
+            if self.sentence_transformer:   # COMET + SBERT
+                ...
+            else:   # plain COMET
+                ...
+        else:   # no commonsense supervision
+            ...
+
+            
         # (1, sequence_length)
         #with self.tokenizer.as_target_tokenizer():
         encoded_summary = self.tokenizer(self.summary[index], 
