@@ -156,7 +156,7 @@ elif args.dataset_name=='mediasum':
     eval_dataset = total_dataset.getEvalData()
     test_dataset = total_dataset.getTestData()
 else: #args.dataset_name=='tweetsumm'
-    total_dataset = TweetsummDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer)
+    total_dataset = TweetsummDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer,paracomet=args.use_paracomet)
     train_dataset = total_dataset.getTrainData()
     eval_dataset = total_dataset.getEvalData()
     test_dataset = total_dataset.getTestData()

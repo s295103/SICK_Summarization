@@ -813,7 +813,7 @@ class TweetsummDataset(Dataset):
         dialog_id = self.id[index]
 
         if self.extra_context: # input: dialogue + commonsense
-            if self.sentence_transformer: # SBERT
+            if self.sentence_transformer: # COMET + SBERT
                 sbert_data = self.sentence_transformer_classified_z[dialog_id]
                 num_sent = len(sbert_data)
                 commonsense = [sbert_data[str(i)]["commonsense"].strip() for i in num_sent]
@@ -835,110 +835,46 @@ class TweetsummDataset(Dataset):
         else:   # input: dialogue only
             input_sample = "\n".join(clean_dialog)
 
-        encoded_dialogue = self.tokenizer(self.dialogue[index], #(1, sequence_length)
+        encoded_dialogue = self.tokenizer(input_sample, #(1, sequence_length)
                                             padding='max_length', 
                                             truncation=True, 
                                             max_length=self.encoder_max_len, 
                                             return_tensors='pt')
 
-        if self.extra_supervision:  # match the commonsense from the output and the golden summary
-            if self.sentence_transformer:   # COMET + SBERT
-                ...
-            else:   # plain COMET
-                ...
-        else:   # no commonsense supervision
-            ...
-
-            
         # (1, sequence_length)
-        #with self.tokenizer.as_target_tokenizer():
-        encoded_summary = self.tokenizer(self.summary[index], 
+        with self.tokenizer.as_target_tokenizer():
+            encoded_summary = self.tokenizer(self.summary[index][0], 
                                             padding='max_length', 
                                             truncation=True, 
                                             max_length=self.decoder_max_len, 
-                                            add_special_tokens=True,
                                             return_tensors='pt')
-        
+            
         
         model_inputs = encoded_dialogue
         model_inputs['input_ids'] = model_inputs['input_ids'].squeeze(0)
         model_inputs['attention_mask'] = model_inputs['attention_mask'].squeeze(0)
         model_inputs['labels'] = encoded_summary['input_ids']
-        def shift_tokens_right(input_ids: torch.Tensor, pad_token_id: int, decoder_start_token_id: int):
-            """
-            Shift input ids one token to the right.
-            """
-            shifted_input_ids = input_ids.new_zeros(input_ids.shape)
-
-            shifted_input_ids[:, 1:] = input_ids[:, :-1].clone()
-            shifted_input_ids[:, 0] = decoder_start_token_id
-
-            if pad_token_id is None:
-                raise ValueError("self.model.config.pad_token_id has to be defined.")
-            # replace possible -100 values in labels by `pad_token_id`
-            shifted_input_ids.masked_fill_(shifted_input_ids == -100, pad_token_id)
-
-            return shifted_input_ids
-
-        #model_inputs['decoder_input_ids'] = shift_tokens_right(model_inputs['labels'].clone(),self.tokenizer.pad_token_id,0).squeeze(0)
         model_inputs['labels'] = model_inputs['labels'].squeeze(0)
-        #print('#####')
-        #print(model_inputs['decoder_input_ids'])
-        #print()
-        #print(model_inputs['labels'])
-        #print('#####')
-        #model_inputs['decoder_attention_mask'] = encoded_summary['attention_mask'].squeeze(0)
         
 
-
-        if self.split_type == "test":
-            encoded_summary2 = self.tokenizer(self.summary2[index], 
-                                            padding='max_length', 
-                                            truncation=True, 
-                                            max_length=self.decoder_max_len, 
-                                            return_tensors='pt')
-            model_inputs['labels2'] = encoded_summary2['input_ids'].squeeze(0)
-
-
-        
-            encoded_summary3 = self.tokenizer(self.summary3[index], 
-                                            padding='max_length', 
-                                            truncation=True, 
-                                            max_length=self.decoder_max_len, 
-                                            return_tensors='pt')
-            model_inputs['labels3'] = encoded_summary3['input_ids'].squeeze(0)
-
-        
-
-
-        if self.extra_supervision==True:
-            if self.split_type=='train':
-                if self.sentence_transformer:
-                    cur_summary_commonsense_data = self.sentence_transformer_classified_w[f"train_{self.id[index]}"]
-                    summary_commonsense = ""
-                    for summary_sentence_idx in range(len(cur_summary_commonsense_data.keys())):
-                        commonsense = cur_summary_commonsense_data[str(summary_sentence_idx)]["out"].strip()+" ."
-                        summary_commonsense += commonsense
-
-
-                
-
-                elif self.paracomet==False:
-                    summary_commonsense = ""
-                    for summ in self.summary_comet_inference["train_"+self.id[index]]:
-                        commonsense = summ[self.supervision_relation][0].strip() +'. '
-                        commonsense = commonsense.replace('PersonX','Person').replace('PersonY','Person')
-                        summary_commonsense += commonsense
+        if self.extra_supervision: 
+            if self.split_type == "train":
+                if self.sentence_transformer:   # COMET + SBERT
+                    summary_commonsense = self.sentence_transformer_classified_w[dialog_id]["0"]["commonsense"].strip()                    
+                else:   # plain COMET
+                    summary_commonsense = self.summary_comet_inference[dialog_id]["0"][self.supervision_relation][0].strip()
 
             
-                with self.tokenizer.as_target_tokenizer():
-                    encoded_extra_supervision = self.tokenizer(summary_commonsense,
-                                                            padding='max_length',
-                                                            truncation=True,
-                                                            max_length=self.decoder_max_len,
-                                                            return_tensors='pt')
+            summary_commonsense = commonsense.replace('PersonX','Person').replace('PersonY','Person')
 
-                model_inputs['extra_labels'] = encoded_extra_supervision['input_ids'].squeeze(0)
+            with self.tokenizer.as_target_tokenizer():
+                encoded_extra_supervision = self.tokenizer(summary_commonsense,
+                                                        padding='max_length',
+                                                        truncation=True,
+                                                        max_length=self.decoder_max_len,
+                                                        return_tensors='pt')
+
+            model_inputs['extra_labels'] = encoded_extra_supervision['input_ids'].squeeze(0)
                     
         return model_inputs
 
