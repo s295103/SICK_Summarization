@@ -128,6 +128,9 @@ if args.dataset_name=='samsum':
 elif args.dataset_name=='dialogsum':
     total_dataset = DialogsumDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer,extra_context=True,extra_supervision=True,paracomet=args.use_paracomet,relation=args.relation,supervision_relation=args.supervision_relation, sentence_transformer=args.use_sentence_transformer, roberta=args.use_roberta)
     test_dataset = total_dataset.getTestData()
+elif args.dataset_name=='tweetsumm':
+    total_dataset = TweetsummDataset_total(args.encoder_max_len,args.decoder_max_len,tokenizer,extra_context=True,extra_supervision=True,paracomet=args.use_paracomet,relation=args.relation,supervision_relation=args.supervision_relation, sentence_transformer=args.use_sentence_transformer, roberta=args.use_roberta)
+    test_dataset = total_dataset.getTestData()
 print('######################################################################')
 print('Test Dataset Size is : ')
 print(len(test_dataset))
