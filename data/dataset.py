@@ -768,7 +768,7 @@ class TweetsummDataset(Dataset):
             print("COMET sentence-transformer")
 
         ##################################################
-        dir = f"../tweetsumm_data/tweetsumm_{self.split_type}.json"
+        dir = f"../data/tweetsumm_data/tweetsumm_{self.split_type}.json"
         with open(dir, 'r') as f:
             json_dict = json.load(f)
             self.id = list(json_dict.keys())
