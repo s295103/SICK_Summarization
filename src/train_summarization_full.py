@@ -73,8 +73,8 @@ print('######################################################################')
 
 
 # Start WANDB Log (Set Logging API)
-wandb.init(project="ICSK4AS", reinit=True, entity='icsk4as')
-
+wandb.init(project="sick_on_tweetsumm", reinit=True, entity='s295103')
+wandb.run.name = f"base_{args.dataset_name}_{'para' if args.use_paracomet else ''}_lr{str(args.init_lr)}"
 
 # Define Global Values
 model_checkpoint_list = [
