@@ -816,12 +816,12 @@ class TweetsummDataset(Dataset):
             if self.sentence_transformer: # COMET + SBERT
                 sbert_data = self.sentence_transformer_classified_z[dialog_id]
                 num_sent = len(sbert_data)
-                commonsense = [sbert_data[str(i)]["commonsense"].strip() for i in num_sent]
+                commonsense = [sbert_data[str(i)]["commonsense"].strip() for i in range(num_sent)]
                 
             else:   # plain COMET
                 comet_data = self.dialogue_comet_inference[dialog_id]
                 num_sent = len(comet_data)
-                commonsense = [comet_data[str(i)][self.relation][0].strip() for i in num_sent]
+                commonsense = [comet_data[str(i)][self.relation][0].strip() for i in range(num_sent)]
 
             commonsense = [c.replace("PersonX", "Person").replace("PersonY", "Person") for c in commonsense]
 
