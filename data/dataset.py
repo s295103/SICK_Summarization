@@ -873,14 +873,14 @@ class TweetsummDataset(Dataset):
                         comm = comm.replace('PersonX','Person').replace('PersonY','Person')
                         summary_commonsense += comm
             
-            with self.tokenizer.as_target_tokenizer():
-                encoded_extra_supervision = self.tokenizer(summary_commonsense,
-                                                        padding='max_length',
-                                                        truncation=True,
-                                                        max_length=self.decoder_max_len,
-                                                        return_tensors='pt')
+                with self.tokenizer.as_target_tokenizer():
+                    encoded_extra_supervision = self.tokenizer(summary_commonsense,
+                                                            padding='max_length',
+                                                            truncation=True,
+                                                            max_length=self.decoder_max_len,
+                                                            return_tensors='pt')
 
-            model_inputs['extra_labels'] = encoded_extra_supervision['input_ids'].squeeze(0)
+                    model_inputs['extra_labels'] = encoded_extra_supervision['input_ids'].squeeze(0)
                     
         return model_inputs
 
