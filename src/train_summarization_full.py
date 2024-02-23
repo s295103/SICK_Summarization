@@ -245,9 +245,9 @@ finetune_trainer = DualDecoderTrainer(
     model = finetune_model,
     args = finetune_args,
     train_dataset = train_dataset,
-    #eval_dataset = eval_dataset,
+    eval_dataset = eval_dataset,
     tokenizer = tokenizer,
-    #compute_metrics=compute_metrics
+    compute_metrics=compute_metrics
 )
 
 
