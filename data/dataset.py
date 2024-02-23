@@ -862,14 +862,14 @@ class TweetsummDataset(Dataset):
                 if self.sentence_transformer:   # COMET + SBERT
                     summary_commonsense = ""
                     for _, summ in self.sentence_transformer_classified_w[dialog_id].items():
-                        comm += summ["commonsense"].strip() + ". "
+                        comm = summ["commonsense"].strip() + ". "
                         comm = comm.replace('PersonX','Person').replace('PersonY','Person')
                         summary_commonsense += comm
 
                 else:   # plain COMET
                     summary_commonsense = ""
                     for _, summ in self.summary_comet_inference[dialog_id].items():
-                        comm += summ[self.supervision_relation].strip() + ". "
+                        comm = summ[self.supervision_relation].strip() + ". "
                         comm = comm.replace('PersonX','Person').replace('PersonY','Person')
                         summary_commonsense += comm
             
