@@ -12,6 +12,7 @@ import argparse
 import random
 import json
 import nltk
+nltk.download('punkt')
 import numpy as np
 import torch
 import torch.nn as nn
@@ -224,7 +225,7 @@ finetune_args = Seq2SeqTrainingArguments(
     load_best_model_at_end=True,
     predict_with_generate=True,
     prediction_loss_only=False,
-    #generation_max_length= 1023 if args.model_name=='microsoft/DialoGPT-small' else 100,
+    generation_max_length= 1023 if args.model_name=='microsoft/DialoGPT-small' else 100,
     generation_num_beams=5,
     metric_for_best_model='eval_rouge2',
     greater_is_better=True,

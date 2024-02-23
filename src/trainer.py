@@ -37,7 +37,7 @@ class DialoGPTTrainer(Seq2SeqTrainer):
             #loss = output.get("loss")
             loss = self.label_smoother(outputs, labels)
 
-            return (loss, output) if return_outputs else loss
+            return (loss, outputs) if return_outputs else loss
         else:
             labels = inputs.get("labels")
             outputs = model(**inputs)
