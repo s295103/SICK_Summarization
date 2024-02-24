@@ -56,7 +56,7 @@ class BartModel_DualDecoder(BartPretrainedModel):
         past_key_values=None,
         inputs_embeds=None,
         decoder_inputs_embeds=None,
-        use_cache=None,
+        use_cache=False,
         output_attentions=None,
         output_hidden_states=None,
         return_dict=None,
@@ -255,7 +255,7 @@ class BartForConditionalGeneration_DualDecoder(BartPretrainedModel):
         decoder_inputs_embeds=None,
         labels=None,
         extra_labels=None,
-        use_cache=None,
+        use_cache=False,
         output_attentions=None,
         output_hidden_states=None,
         return_dict=None,
@@ -394,7 +394,7 @@ class BartForConditionalGeneration_DualDecoder(BartPretrainedModel):
         head_mask=None,
         decoder_head_mask=None,
         cross_attn_head_mask=None,
-        use_cache=None,
+        use_cache=False,
         encoder_outputs=None,
         **kwargs
     ):
@@ -496,7 +496,7 @@ class BartForConditionalGeneration_DualHead(BartPretrainedModel):
         decoder_inputs_embeds=None,
         labels=None,
         extra_labels=None,
-        use_cache=None,
+        use_cache=False,
         output_attentions=None,
         output_hidden_states=None,
         return_dict=None,
@@ -609,7 +609,7 @@ class BartForConditionalGeneration_DualHead(BartPretrainedModel):
         head_mask=None,
         decoder_head_mask=None,
         cross_attn_head_mask=None,
-        use_cache=None,
+        use_cache=False,
         encoder_outputs=None,
         **kwargs
     ):
@@ -711,7 +711,7 @@ class BartForConditionalGeneration_DualHead_viz(BartPretrainedModel):
         decoder_inputs_embeds=None,
         labels=None,
         extra_labels=None,
-        use_cache=None,
+        use_cache=False,
         output_attentions=True,
         output_hidden_states=None,
         return_dict=None,
@@ -824,7 +824,7 @@ class BartForConditionalGeneration_DualHead_viz(BartPretrainedModel):
         head_mask=None,
         decoder_head_mask=None,
         cross_attn_head_mask=None,
-        use_cache=None,
+        use_cache=False,
         encoder_outputs=None,
         **kwargs
     ):
@@ -928,7 +928,7 @@ class BartForConditionalGeneration_DualDecoder_viz(BartPretrainedModel):
         decoder_inputs_embeds=None,
         labels=None,
         extra_labels=None,
-        use_cache=None,
+        use_cache=False,
         output_attentions=True,
         output_hidden_states=None,
         return_dict=None,
@@ -1066,7 +1066,7 @@ class BartForConditionalGeneration_DualDecoder_viz(BartPretrainedModel):
         head_mask=None,
         decoder_head_mask=None,
         cross_attn_head_mask=None,
-        use_cache=None,
+        use_cache=False,
         encoder_outputs=None,
         **kwargs
     ):
