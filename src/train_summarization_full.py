@@ -166,6 +166,7 @@ print('######################################################################')
 
 # Loading checkpoint of model
 config = AutoConfig.from_pretrained(args.model_name)
+config.use_cache = False
 finetune_model = BartForConditionalGeneration_DualDecoder.from_pretrained(args.model_name)
 print('######################################################################')
 print("Number of Model Parameters are : ",finetune_model.num_parameters())

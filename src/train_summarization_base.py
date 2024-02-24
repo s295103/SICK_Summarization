@@ -173,6 +173,7 @@ print('######################################################################')
 
 # Loading checkpoint of model
 config = AutoConfig.from_pretrained(args.model_name)
+config.use_cache = False
 if args.model_name == 'google/t5-v1_1-large':
     finetune_model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name,from_tf=True)
 elif args.model_name == 'microsoft/DialoGPT-small':
